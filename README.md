@@ -12,7 +12,7 @@ Golang bindings for Coqui's [STT](https://github.com/coqui-ai/STT) speech-to-tex
 Run the following command:
 
     $ pip3 install --extra-index-url https://google-coral.github.io/py-repo/ tflite_runtime
-
+    - for running against gpu set environment variable STT_TFLITE_DELEGATE=gpu (make sure cuda is installed)
 ## Install Coqui STT
 
 - fetch an up-to-date `native_client.<your system>.tar.xz` matching your system from ["releases"](https://github.com/coqui-ai/STT/releases/tag/v1.0.0)
