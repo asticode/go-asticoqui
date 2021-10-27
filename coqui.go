@@ -1,10 +1,9 @@
-// package astideepspeech provides bindings for Mozilla's DeepSpeech speech-to-text library.
-package astideepspeech
+package asticoqui
 
 /*
 #cgo CXXFLAGS: -std=c++11
 #cgo LDFLAGS: -ldeepspeech
-#include "deepspeech_wrap.h"
+#include "coqui_wrap.h"
 #include "stdlib.h"
 */
 import "C"
@@ -13,7 +12,7 @@ import (
 	"unsafe"
 )
 
-// Model provides an interface to a trained DeepSpeech model.
+// Model provides an interface to a trained model.
 type Model struct {
 	w *C.ModelWrapper
 }
@@ -82,7 +81,7 @@ type sliceHeader struct {
 	Cap  int
 }
 
-// SpeechToText uses the DeepSpeech model to convert speech to text.
+// SpeechToText uses the model to convert speech to text.
 // buffer is 16-bit, mono raw audio signal at the appropriate sample rate (matching what the model was trained on).
 func (m *Model) SpeechToText(buffer []int16) (string, error) {
 	hdr := (*sliceHeader)(unsafe.Pointer(&buffer))
@@ -151,7 +150,7 @@ func (m *Metadata) Close() {
 	C.Metadata_Close((*C.Metadata)(unsafe.Pointer(m)))
 }
 
-// SpeechToTextWithMetadata uses the DeepSpeech model to convert speech to text and
+// SpeechToTextWithMetadata uses the model to convert speech to text and
 // output results including metadata.
 //
 // buffer is a 16-bit, mono raw audio signal at the appropriate sample rate (matching what the model was trained on).
@@ -253,7 +252,7 @@ func (s *Stream) Discard() {
 	s.sw = nil
 }
 
-// Version returns the version of the DeepSpeech C library.
+// Version returns the version of the C library.
 // The returned version is a semantic version (SemVer 2.0.0).
 func Version() string {
 	str := C.Version()
@@ -261,7 +260,7 @@ func Version() string {
 	return C.GoString(str)
 }
 
-// errorFromCode converts an error code returned by DeepSpeech into a Go error.
+// errorFromCode converts a C error code into a Go error.
 // Returns nil if code is equal to zero, indicating success.
 func errorFromCode(code C.int) error {
 	if code == 0 {

@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/asticode/go-astideepspeech"
+	"github.com/asticode/go-asticoqui"
 	"github.com/cryptix/wav"
 )
 
@@ -19,7 +19,7 @@ var extended = flag.Bool("extended", false, "Use extended metadata")
 var maxResults = flag.Uint("max-results", 5, "Maximum number of results when -extended is true")
 var printSampleRate = flag.Bool("sample-rate", false, "Print model sample rate and exit")
 
-func metadataToStrings(m *astideepspeech.Metadata) []string {
+func metadataToStrings(m *asticoqui.Metadata) []string {
 	results := make([]string, 0, m.NumTranscripts())
 	for _, tr := range m.Transcripts() {
 		var res string
@@ -37,7 +37,7 @@ func main() {
 	log.SetFlags(0)
 
 	if *version {
-		fmt.Println(astideepspeech.Version())
+		fmt.Println(asticoqui.Version())
 		return
 	}
 
@@ -49,8 +49,8 @@ func main() {
 		return
 	}
 
-	// Initialize DeepSpeech
-	m, err := astideepspeech.New(*model)
+	// Initialize Coqui
+	m, err := asticoqui.New(*model)
 	if err != nil {
 		log.Fatal("Failed initializing model: ", err)
 	}
