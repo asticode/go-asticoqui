@@ -22,7 +22,7 @@ to run against gpu set environment variable STT_TFLITE_DELEGATE=gpu (make sure c
 - set environment variables to point to client
     export CGO_LDFLAGS="-L/tmp/native_client.tflite.Linux/"
     export CGO_CXXFLAGS="-I/tmp/native_client.tflite.Linux/"
-    export LD_LIBRARY_PATH=/tmp/native_client.tflite.Linux//:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=/tmp/native_client.tflite.Linux/:$LD_LIBRARY_PATH
 
 ## Install asticoqui
 
@@ -33,7 +33,7 @@ Run the following command:
 # Example       
 ## Get the pre-trained model and scorer
 
-Sign up with your email and download the scorer and tflite files from eg https://coqui.ai/english/coqui/v1.0.0-large-vocab
+Enter Email to Download the scorer and tflite files (Go to)[https://coqui.ai/english/coqui/v1.0.0-large-vocab]
     
 ## Get the audio files
 
