@@ -33,7 +33,7 @@ Run the following command:
 # Example       
 ## Get the pre-trained model and scorer
 
-Enter Email to Download the scorer and tflite files (Go to)[https://coqui.ai/english/coqui/v1.0.0-large-vocab]
+Go to [this page](https://coqui.ai/english/coqui/v1.0.0-large-vocab) and click `Enter Email to Download` at the bottom of the page
     
 ## Get the audio files
 
