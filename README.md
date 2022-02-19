@@ -25,10 +25,17 @@ to run against gpu set environment variable STT_TFLITE_DELEGATE=gpu (make sure c
     export LD_LIBRARY_PATH=/tmp/native_client.tflite.Linux/:$LD_LIBRARY_PATH
 
 ## Install asticoqui
+### Install dependencies
 
 Run the following command:
 
     $ go get -u github.com/asticode/go-asticoqui/...
+
+### Install executables
+
+Run the following command:
+
+    $ go install github.com/asticode/go-asticoqui/cmd
     
 # Example       
 ## Get the pre-trained model and scorer
