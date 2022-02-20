@@ -57,7 +57,8 @@ Run the following command:
     $ go install github.com/asticode/go-asticoqui/cmd
 ```
 
-# Example usage
+# Example Usage
+
 ## Get the pre-trained model and scorer
 
 Go to [this page](https://coqui.ai/english/coqui/v1.0.0-huge-vocab) and click `Enter Email to Download` at the bottom of the page. Download `model.tflite` and `huge_vocabulary.scorer`.
