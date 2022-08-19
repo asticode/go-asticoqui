@@ -9,6 +9,7 @@ package asticoqui
 import "C"
 import (
 	"errors"
+	"math"
 	"unsafe"
 )
 
@@ -122,7 +123,7 @@ func (ct *CandidateTranscript) NumTokens() uint {
 func (ct *CandidateTranscript) Tokens() []TokenMetadata {
 	numTokens := uint(C.CandidateTranscript_NumTokens((*C.CandidateTranscript)(unsafe.Pointer(ct))))
 	allTokens := C.CandidateTranscript_Tokens((*C.CandidateTranscript)(unsafe.Pointer(ct)))
-	return (*[1 << 30]TokenMetadata)(unsafe.Pointer(allTokens))[:numTokens:numTokens]
+	return (*[math.MaxInt32 - 1]TokenMetadata)(unsafe.Pointer(allTokens))[:numTokens:numTokens]
 }
 
 // Confidence returns the approximated confidence value for this transcript.
@@ -142,7 +143,7 @@ func (m *Metadata) NumTranscripts() uint {
 func (m *Metadata) Transcripts() []CandidateTranscript {
 	numTranscripts := int32(C.Metadata_NumTranscripts((*C.Metadata)(unsafe.Pointer(m))))
 	allTranscripts := C.Metadata_Transcripts((*C.Metadata)(unsafe.Pointer(m)))
-	return (*[1 << 30]CandidateTranscript)(unsafe.Pointer(allTranscripts))[:numTranscripts:numTranscripts]
+	return (*[math.MaxInt32 - 1]CandidateTranscript)(unsafe.Pointer(allTranscripts))[:numTranscripts:numTranscripts]
 }
 
 // Close frees the Metadata structure properly.
